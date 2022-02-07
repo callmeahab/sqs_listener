@@ -121,7 +121,7 @@ impl<F: Fn(&Message) + Send + Sync> SQSListenerClient<F> {
             })
             .await?
             .messages
-            .unwrap_or(vec![])?;
+            .unwrap_or(vec![]);
 
         for message in messages {
             // ignore result
