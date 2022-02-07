@@ -121,7 +121,7 @@ impl<F: Fn(&Message) + Send + Sync> SQSListenerClient<F> {
             })
             .await?
             .messages
-            .ok_or(Error::UnknownReceiveMessages)?;
+            .unwrap_or(vec![])?;
 
         for message in messages {
             // ignore result
